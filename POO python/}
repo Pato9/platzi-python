@@ -1,0 +1,46 @@
+
+
+class Auto():
+
+    def __init__(self,marca,modelo,color):
+        self.marca = marca
+        self.modelo = modelo
+        self.color = color
+        self._velocidad_tope = 230
+        self._motor = Motor(cilindros=4) 
+
+
+    def en_movimiento(self,velocidad_inicial):
+        gasolina = 20
+        for i in range(velocidad_inicial,self._velocidad_tope+1):
+        
+            if i == self._velocidad_tope:
+                tiempo = 0.0
+                epsilon = 0.0001
+                paso = epsilon**2
+                
+
+                print('se esta quedando sin gasolina')
+
+                while abs(tiempo**2 - gasolina)>=epsilon and tiempo<=gasolina:
+                    tiempo+=paso
+                print(paso)
+                
+                if abs(tiempo**2 - gasolina)>=epsilon:
+                    print('aun tiene gasolina')
+                else:
+                    print(f'debe ingresar gasolina')
+class Motor():
+
+    def __init__(self,cilindros,tipo = 'gasolina'):
+        self.cilindros = cilindros
+        self.tipo = tipo
+        
+
+
+mi_auto = Auto('Nissan','GTR-35','Azul')
+mi_auto.en_movimiento(0)
+
+
+
+
